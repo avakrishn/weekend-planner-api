@@ -3,15 +3,57 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Plan My Weekend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 
 </head>
 <body>
-    
+
+    <div class="jumbotron jumbotron-fluid text-center">
+        <h1>What To Do This Weekend</h1>
+    </div>
+
+    <div class="container-fluid d-flex justify-content-center p-0">
+        <div class="container-fluid w-25 float-left p-0">
+            <form>
+                <label>Choose or Add Your Favorite / Watchlist Movie: </label>
+                <input type="text">
+                <button type="button" class="btn btn-primary">Add Movie!</button>
+            </form>
+            <div id="movieButtons" class="float-left"></div>
+            <div id="movieGiphs" class="float-left"></div>
+            <div id="movieInfo" class="float-left"></div>
+
+        </div>
+        
+        <div class="container-fluid w-25 float-left p-0">
+                <form>
+                    <label>Choose or Add Your Favorite Artist or Band: </label>
+                    <input type="text">
+                    <button type="button" class="btn btn-success">Add Artist / Band!</button>
+                </form>
+                <div id="musicButtons" class="float-left"></div>
+                <div id="musicGiphs" class="float-left"></div>
+                <div id="musicInfo" class="float-left"></div>
+        
+        </div>
+
+        <div class="container-fluid w-25 float-left p-0">
+                <form>
+                    <label>Choose or Add Your Favorite Sports Team: </label>
+                    <input type="text">
+                    <button type="button" class="btn btn-danger">Add Sports Team!</button>
+                </form>
+                <div id="sportsButtons" class="float-left"></div>
+                <div id="sportsGiphs" class="float-left"></div>
+                <div id="sportsInfo" class="float-left"></div>
+        
+        </div>
+    </div>
 </body>
 </html>
