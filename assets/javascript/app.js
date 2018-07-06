@@ -1,4 +1,4 @@
-var movies = ["Back To The Future", "Solo: A Star Wars Story", "Avengers Infinity War", "The Sound of Music", "Zootopia"];
+var movies = ["Back To The Future", "Solo: A Star Wars Story", "Avengers Infinity War", "The Sound Of Music", "Zootopia"];
 var musicians = ["OK Go", "Bruno Mars", "Imagine Dragons", "Adele", "Green Day"];
 var sportsTeams = ["Golden State Warriors", "New England Patriots", "San Francisco Giants", "Toronto Maple Leafs", "LA Galaxy"];
 
@@ -7,12 +7,12 @@ var sportsTeams = ["Golden State Warriors", "New England Patriots", "San Francis
 
 function addButtons(){
     event.preventDefault();
-    var userInput = $(this).prev().val().trim(); // the prev method gets the immediate predecessor of the element in the DOM tree, in this case $(this) is the specific form button pressed and the .prev() method finds the input field that was just above the button pressed. (.prev() is similar to .next())
+    var userInput = $(this).prev().val().trim().toLowerCase(); // the prev method gets the immediate predecessor of the element in the DOM tree, in this case $(this) is the specific form button pressed and the .prev() method finds the input field that was just above the button pressed. (.prev() is similar to .next())
     if(userInput !== ""){
         if($(this).parent().attr('id') == "movieForm") //.parent() method gets the parent div that the element is nested in, in the DOM tree.
         {
             for(var i in movies){
-                if (movies[i] === userInput){
+                if (movies[i].toLowerCase() === userInput){
                     $(this).prev().val("");
                     return false;
                 }   
@@ -25,7 +25,7 @@ function addButtons(){
         else if($(this).parent().attr('id') == "musicianForm")
         {
             for(var i in musicians){
-                if (musicians[i] === userInput){
+                if (musicians[i].toLowerCase() === userInput){
                     $(this).prev().val("");
                     return false;
                 }   
@@ -38,7 +38,7 @@ function addButtons(){
         else
         {
             for(var i in sportsTeams){
-                if (sportsTeams[i] === userInput){
+                if (sportsTeams[i].toLowerCase() === userInput){
                     $(this).prev().val("");
                     return false;
                 }   
