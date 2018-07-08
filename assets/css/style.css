@@ -8,3 +8,66 @@ button{
     text-transform: capitalize;
 }
 
+#title {
+    background-image: url("../images/title-bg.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    z-index: 20;
+	top: 0px;
+    left: 0px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+h1{
+    font-size: 6vw;
+    position: absolute;
+    top: 12%;
+    left: 6%;
+    color: white;
+}
+
+
+.movieDiv{
+    padding-top: 5vw;
+    background-image: url("../images/blue-movie.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    z-index: 20;
+	top: 0px;
+    left: 0px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.musicianDiv{
+    padding-top: 5vw;
+    background-image: url("../images/green-musician.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    z-index: 20;
+	top: 0px;
+    left: 0px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.sportsTeamDiv{
+    padding-top: 5vw;
+    background-image: url("../images/red-sportsTeam.jpg");
+    background-color: black;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    z-index: 20;
+	top: 0px;
+    left: 0px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
