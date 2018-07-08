@@ -57,7 +57,7 @@ function addGifs (){
     var offset = $(this).attr('data-offset'); //keeps track of current value of data-offset of the button that was pressed
     var selection = $(this).text();
     console.log(selection);
-    var gifURL = "https://api.giphy.com/v1/gifs/search?q="+selection+"&offset="+offset+"&api_key=bq07u6AXsHP4sCiu6fbhkT6IVvpQsfbS&limit=4"
+    var gifURL = "https://api.giphy.com/v1/gifs/search?q="+selection+"&offset="+offset+"&api_key=bq07u6AXsHP4sCiu6fbhkT6IVvpQsfbS&limit=10"
     var gifDiv = $(this).parent().next()
     gifDiv.empty(); // empties the Gifs div under the button div that is in respect to the button pressed
     var infoDiv = $(this).parent().next().next()
@@ -83,7 +83,7 @@ function addGifs (){
             gifDiv.append(newDiv);
         }
     });
-    $(this).attr('data-offset', parseInt(offset)+4); //sets the data-offset value equal to the original data-offset value + 4 that is unique to the specific button
+    $(this).attr('data-offset', parseInt(offset)+10); //sets the data-offset value equal to the original data-offset value + 4 that is unique to the specific button
 }
 
 
