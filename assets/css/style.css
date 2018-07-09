@@ -5,6 +5,37 @@ body, html{
     color: white;
 }
 
+.navbar{
+    opacity: 0.9;
+}
+
+.navbar .navbar-brand{
+    color: #1c7185;
+}
+
+nav .navbar-nav li a{
+    color: darkslategray !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    
+    font-weight: bold;
+    background-color: transparent;
+}
+
+#movieLink.active{
+    color: blue !important;
+}
+
+#musicianLink.active{
+    color: green !important;
+
+}
+
+#sportsTeamLink.active{
+    color: red !important;
+}
+
 button{
     /* will capitalize the first letter of every word on every button */
     text-transform: capitalize;
@@ -33,7 +64,7 @@ h1{
 }
 
 .movieDiv, .musicianDiv, .sportsTeamDiv{
-    padding-top: 4vw;
+    padding-top: 5vw;
     /* parallax scroling effect */
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -43,6 +74,7 @@ h1{
 	top: 0px;
     left: 0px;
     margin-bottom: 0;
+    height: 100% !important;
 }
 
 .movieDiv{
@@ -54,7 +86,7 @@ h1{
 }
 
 .sportsTeamDiv{
-    background-image: url("../images/red-sportsTeam.jpg");
+    background-image: url("../images/background-1054975_1920.jpg");
 }
 
 #movieGifs, #musicianGifs, #sportsTeamGifs{

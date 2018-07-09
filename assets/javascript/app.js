@@ -1,7 +1,7 @@
 //global variables
 var movies = ["Back To The Future", "Solo: A Star Wars Story", "Avengers Infinity War", "The Sound Of Music", "Zootopia"];
 var musicians = ["OK Go", "Bruno Mars", "Imagine Dragons", "Adele", "Green Day"];
-var sportsTeams = ["Golden State Warriors", "Philadelphia Eagles", "San Francisco Giants", "Toronto Maple Leafs", "LA Galaxy"];
+var sportsTeams = ["Golden State Warriors", "Philadelphia Eagles", "Houston Astros", "Washington Capitals", "Toronto FC"];
 
 
 
@@ -144,4 +144,3 @@ $(document).on('mouseleave','.gifDiv', function(){ // when mouse leavs the div c
     $('.gifRating').hide();
 
 });
-
