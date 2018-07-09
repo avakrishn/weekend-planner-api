@@ -127,7 +127,10 @@ function createButtons(){ //creates buttons that are in the respective arrays an
 $(window).ready(function(){ //when the window is ready create buttons from the respective global variable arrays and on button (inside the form) click, execute addButtons function
     createButtons();
     $('form button').on('click', addButtons);
-    
+    $('form').submit(function(e){
+        e.preventDefault(); //need to prevent the form from autosubmitting and refreshing page
+        $('form button').click(); // when user hits enter/return to submit the form then the click event is triggered for the button in the form which is attached to the addButtons function; cannot just run addButtons here because addButtons is associated with a specific form button click event
+    });
 });
 
 
