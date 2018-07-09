@@ -6,6 +6,7 @@
     <title>Plan My Weekend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -45,7 +46,8 @@
             <button type="button" class="btn btn-primary btn-sm">Add Movie!</button>
         </form>
         <div id="movieButtons"></div>
-        <div id="movieGifs" class="d-flex justify-content-center flex-wrap m-0 mt-2"></div>
+        <div class="m-0 mt-2 favoriteDiv"></div>
+        <div id="movieGifs" class="m-0 mt-2"></div>
         <div id="movieInfo"></div>
 
     </div>
@@ -57,7 +59,8 @@
                 <button type="button" class="btn btn-success btn-sm">Add Artist / Band!</button>
             </form>
             <div id="musicianButtons"></div>
-            <div id="musicianGifs" class="d-flex justify-content-center flex-wrap m-0 mt-2" ></div>
+            <div class="m-0 mt-2 favoriteDiv"></div>
+            <div id="musicianGifs" class="m-0 mt-2"></div>
             <div id="musicianInfo" ></div>
     
     </div>
@@ -69,7 +72,8 @@
                 <button type="button" class="btn btn-danger btn-sm">Add Sports Team!</button>
             </form>
             <div id="sportsTeamButtons"></div>
-            <div id="sportsTeamGifs" class="d-flex justify-content-center flex-wrap m-0 mt-2"></div>
+            <div class="m-0 mt-2 favoriteDiv"></div>
+            <div id="sportsTeamGifs" class="m-0 mt-2"></div>
             <div id="sportsTeamInfo"></div>
     
     </div>
