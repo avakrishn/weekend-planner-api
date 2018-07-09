@@ -105,7 +105,6 @@ function playPauseGifs(){
 }
 
 function addFavorites(){
-    debugger;
     if($(this).attr("data-favorite") == "yes"){
         // $(this).html('<i class="far fa-heart"></i>').css('color', 'white');
         $(this).parent().remove();
