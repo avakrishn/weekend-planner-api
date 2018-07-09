@@ -5,7 +5,6 @@ var sportsTeams = ["Golden State Warriors", "Philadelphia Eagles", "Houston Astr
 
 
 
-
 function addButtons(){
     var userInput = $(this).prev().val().trim().toLowerCase(); // the prev method gets the immediate predecessor of the element in the DOM tree, in this case $(this) is the specific form button pressed and the .prev() method finds the input field that was just above the button pressed. (.prev() is similar to .next())
     if(userInput !== ""){
@@ -59,9 +58,9 @@ function addGifs (){
     var selection = $(this).text();
     console.log(selection);
     var gifURL = "https://api.giphy.com/v1/gifs/search?q="+selection+"&offset="+offset+"&api_key=bq07u6AXsHP4sCiu6fbhkT6IVvpQsfbS&limit=10" //offset will offset the gifs returned by a certain number; gifs are limited to 10 for each query
-    var gifDiv = $(this).parent().next() //depending on if in movie, musician, or sports Team sections, $(this).parent will referece the respective movieButtons, musicianButtons, or sportsTeamButtons div and .next() will reference the respective the movieGifs, musicianGifs, or sportsTeamGifs div
+    var gifDiv = $(this).parent().next().next(); //depending on if in movie, musician, or sports Team sections, $(this).parent will referece the respective movieButtons, musicianButtons, or sportsTeamButtons div and .next().next() will reference the respective the movieGifs, musicianGifs, or sportsTeamGifs div
     gifDiv.empty(); // empties the Gifs div under the button div that is in respect to the button pressed
-    var infoDiv = $(this).parent().next().next() //reference the respective Info div depending on if in movie, musician, or sport Teams section
+    var infoDiv = $(this).parent().next().next().next(); //reference the respective Info div depending on if in movie, musician, or sport Teams section
     infoDiv.empty(); //empties the Info div under the Gifs div that is in respect to the button pressed
 
     // Querying GIPHY API with request
@@ -81,7 +80,9 @@ function addGifs (){
             });
             var rating = $("<h5>").html("Rating: " + response.data[i].rating); //rating for each gif
             rating.addClass("gifRating");
-            newDiv.append(newGif, rating); //appends gif and rating to div
+            var favorite = $("<span>").html('<i class="far fa-heart"></i>').addClass('gifFavorite').css('color', 'white');
+            favorite.attr("data-favorite", "no");
+            newDiv.append(newGif, rating, favorite); //appends gif, rating, and favorite to div
             gifDiv.append(newDiv); // appends the div to the page
         }
     });
@@ -91,7 +92,7 @@ function addGifs (){
 
 
 function playPauseGifs(){
-    $('.gifRating').hide(); //hide the rating when the user clicks the gif
+    $('.gifRating, .gifFavorite').hide(); //hide the rating when the user clicks the gif
     
     if($(this).attr("data-state") == "still"){ //if the current state of gif is still on user click then changes state to animate by changing image src
         $(this).attr("src", $(this).attr("data-animate"));
@@ -101,6 +102,19 @@ function playPauseGifs(){
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
     }
+}
+
+function addFavorites(){
+    debugger;
+    if($(this).attr("data-favorite") == "yes"){
+        // $(this).html('<i class="far fa-heart"></i>').css('color', 'white');
+        $(this).parent().remove();
+    }
+    else{
+        $(this).html('<i class="fas fa-heart"></i>').css('color', 'red');
+        $(this).attr("data-favorite", "yes").addClass('keep');
+        $('.keep').parent().appendTo($(this).parent().parent().prev());
+    } 
 }
 
 function createButtons(){ //creates buttons that are in the respective arrays and is called on page load
@@ -126,7 +140,7 @@ function createButtons(){ //creates buttons that are in the respective arrays an
 
 $(window).ready(function(){ //when the window is ready create buttons from the respective global variable arrays and on button (inside the form) click, execute addButtons function
     createButtons();
-    $('form button').on('click', addButtons);
+    $('form button').on('click touchstart', addButtons);
     $('form').submit(function(e){
         e.preventDefault(); //need to prevent the form from autosubmitting and refreshing page
         $('form button').click(); // when user hits enter/return to submit the form then the click event is triggered for the button in the form which is attached to the addButtons function; cannot just run addButtons here because addButtons is associated with a specific form button click event
@@ -134,13 +148,15 @@ $(window).ready(function(){ //when the window is ready create buttons from the r
 });
 
 
-$(document).on('click', '.gif', playPauseGifs); //executes the playPauseGifs function when .gif is clicked
-$(document).on('click', '.movie, .musician, .sportsTeam', addGifs); //executes the addGifs function when either .movie, .musician, or .sportsTeam is clicked
+$(document).on('click touchstart', '.gif', playPauseGifs); //executes the playPauseGifs function when .gif is clicked
+$(document).on('click touchstart', '.movie, .musician, .sportsTeam', addGifs); //executes the addGifs function when either .movie, .musician, or .sportsTeam is clicked
 $(document).on('mouseenter','.gifDiv', function(){ //when mouse enters the div containing the gif then the rating will be diplayed
-    $('.gifRating').show();
+    $('.gifRating, .gifFavorite').show();
 
 });
 $(document).on('mouseleave','.gifDiv', function(){ // when mouse leavs the div containing the gif then the rating will be hidden
-    $('.gifRating').hide();
+    $('.gifRating, .gifFavorite').hide();
 
 });
+
+$(document).on('click touchstart', '.gifFavorite', addFavorites);
