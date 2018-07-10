@@ -1,5 +1,5 @@
 //global variables
-var movies = ["Back To The Future", "Solo: A Star Wars Story", "Avengers Infinity War", "The Sound Of Music", "Zootopia"];
+var movies = ["Back To The Future", "Solo A Star Wars Story", "Avengers Infinity War", "The Sound Of Music", "Zootopia"];
 var musicians = ["OK Go", "Bruno Mars", "Imagine Dragons", "Adele", "Green Day"];
 var sportsTeams = ["Golden State Warriors", "Philadelphia Eagles", "Houston Astros", "Washington Capitals", "Toronto FC"];
 
@@ -31,7 +31,7 @@ function addButtons(){
                 }   
             }
             musicians.push(userInput);
-            var musicianButton = $("<button>").addClass("btn btn-success btn-sm m-1 movie").html(userInput);
+            var musicianButton = $("<button>").addClass("btn btn-success btn-sm m-1 musician").html(userInput);
             musicianButton.attr('data-offset', 0);
             $('#musicianButtons').append(musicianButton);
         }
@@ -44,7 +44,7 @@ function addButtons(){
                 }   
             }
             sportsTeams.push(userInput);
-            var sportsTeamButton = $("<button>").addClass("btn btn-danger btn-sm m-1 movie").html(userInput);
+            var sportsTeamButton = $("<button>").addClass("btn btn-danger btn-sm m-1 sportsTeam").html(userInput);
             sportsTeamButton.attr('data-offset', 0);
             $('#sportsTeamButtons').append(sportsTeamButton);
         }
@@ -60,8 +60,7 @@ function addGifs (){
     var gifURL = "https://api.giphy.com/v1/gifs/search?q="+selection+"&offset="+offset+"&api_key=bq07u6AXsHP4sCiu6fbhkT6IVvpQsfbS&limit=10" //offset will offset the gifs returned by a certain number; gifs are limited to 10 for each query
     var gifDiv = $(this).parent().next().next(); //depending on if in movie, musician, or sports Team sections, $(this).parent will referece the respective movieButtons, musicianButtons, or sportsTeamButtons div and .next().next() will reference the respective the movieGifs, musicianGifs, or sportsTeamGifs div
     gifDiv.empty(); // empties the Gifs div under the button div that is in respect to the button pressed
-    var infoDiv = $(this).parent().next().next().next(); //reference the respective Info div depending on if in movie, musician, or sport Teams section
-    infoDiv.empty(); //empties the Info div under the Gifs div that is in respect to the button pressed
+    
 
     // Querying GIPHY API with request
     $.ajax({
@@ -89,7 +88,36 @@ function addGifs (){
     $(this).attr('data-offset', parseInt(offset)+10); //sets the data-offset value equal to the original data-offset value + 4 that is unique to the specific button
 }
 
-
+function addInfo(){
+    // var infoDiv = $(this).parent().next().next().next(); //reference the respective Info div depending on if in movie, musician, or sport Teams section
+    // infoDiv.empty(); //empties the Info div under the Gifs div that is in respect to the button pressed
+   
+    if($(this).hasClass('movie')){
+        $('#poster, #title, #rated, #genre, #plot, #rating, #dvd').empty();
+        var movie = $(this).text();
+        var movieURL = "https://www.omdbapi.com/?t="+movie+"&apikey=trilogy&type=movie"
+        $.ajax({
+            url: movieURL,
+            method: "GET"
+        }).then(function(response){
+            $('p').show();
+            var posterImg = $('<img>').attr('src', response.Poster).addClass('posterImg');
+            $('#poster').append(posterImg);
+            $('#mTitle').html(response.Title);
+            $('#rated').html(response.Rated);
+            $('#genre').html(response.Genre);
+            $('#plot').html(response.Plot);
+            $('#rating').html(response.Metascore);
+            if(response.DVD == "N/A"){
+                $('#dvd').html("Not Yet! Try checking your local movie theater!");
+            }
+            else{
+                $('#dvd').html(response.DVD);
+            }
+            
+        });
+    }
+}
 
 function playPauseGifs(){
     $('.gifRating, .gifFavorite').hide(); //hide the rating when the user clicks the gif
@@ -149,6 +177,7 @@ $(window).ready(function(){ //when the window is ready create buttons from the r
 
 $(document).on('click touchstart', '.gif', playPauseGifs); //executes the playPauseGifs function when .gif is clicked
 $(document).on('click touchstart', '.movie, .musician, .sportsTeam', addGifs); //executes the addGifs function when either .movie, .musician, or .sportsTeam is clicked
+$(document).on('click touchstart', '.movie, .musician, .sportsTeam', addInfo);
 $(document).on('mouseenter','.gifDiv', function(){ //when mouse enters the div containing the gif then the rating will be diplayed
     $('.gifRating, .gifFavorite').show();
 

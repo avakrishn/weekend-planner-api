@@ -21,6 +21,7 @@
     <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
         <a class="navbar-brand py-0 ml-4" href="#">Weekend Relaxation</a>
 
+        <!-- button needed for creating a collapsible navbar along with the appropriate js files above -->
         <button class="navbar-toggler btn-sm" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,7 +47,7 @@
     </div>
 
    
-    <div class="container-fluid clearfix text-center movieDiv" id="movieSection">
+    <div class="container-fluid clearfix text-center movieDiv h-100" id="movieSection">
         <form class="mb-3" id="movieForm">
             <label class="m-2">Choose or Add Your Favorite / Watchlist Movie:</label>
             <input type="text">
@@ -55,8 +56,17 @@
         <div id="movieButtons"></div>
         <div class="m-0 mt-2 favoriteDiv"></div>
         <div id="movieGifs" class="m-0 mt-2"></div>
-        <div id="movieInfo"></div>
-
+        <div id="movieInfo">
+            <span id="poster" class="w-25"></span>
+            <div class="info text-left float-left w-75">
+                <p>Title: <span id="mTitle"></span></p>
+                <p>Rated: <span id="rated"></span></p>
+                <p>Genre: <span id="genre"></span></p>
+                <p>Plot: <span id="plot"></span></p>
+                <p>Metacritic Rating: <span id="rating"></span></p>
+                <p>DVD: <span id="dvd"></span></p>
+            </div>
+        </div>
     </div>
     
     <div class="container-fluid clearfix text-center musicianDiv" id="musicianSection">
